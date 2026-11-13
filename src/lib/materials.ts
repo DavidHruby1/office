@@ -129,7 +129,7 @@ export function mat(key: string, color?: string): THREE.MeshStandardMaterial {
       // woods keep their grain: tint multiplies the texture; plain paints simply take the colour
       m.color = new THREE.Color(color)
     } else {
-      m = (FACTORIES[key] ?? FACTORIES.white)()
+      m = (Object.hasOwn(FACTORIES, key) ? FACTORIES[key] : FACTORIES.white)()
     }
     m.name = id
     cache.set(id, m)
